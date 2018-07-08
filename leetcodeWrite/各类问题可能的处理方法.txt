@@ -1,0 +1,17 @@
+字符串处理：（例子，hard中SubStringWithConcatenationOfAllWords和medium中Longest Substring Without Repeating Characters）
+	基础是 移动窗口的方法，思路就是维护一个窗口也可以说是左右指针，
+	每次关注窗口内的字符串，在每次判断中，左窗口和右窗口选择其一向前移动。
+	维护一个hashSet等和一个index表示左窗口。
+	因为左窗口和右窗口都只向前，所以两个窗口都对每个元素访问不超过一遍，因此时间复杂度为O(2*n)=O(n),是线性算法。
+	空间复杂度为HashSet的size,也是O(n).
+
+树的构造问题：(例子，easy中ConvertSortedArraytoBinarySearchTree)
+	本质使用递归的方法，它是构建一棵树，而不是给定一棵树，然后进行遍历
+	例如ConvertSortedArraytoBinarySearchTree数组本身有序，所以取中点为根，然后递归构建左右子树
+	
+高精度问题：（例子，easy中PlusOne，google易）
+	注意维护进位，最高位问题
+	
+一维动态规划问题：例如爬楼梯问题easy中Climbing Stairs
+	
+	
