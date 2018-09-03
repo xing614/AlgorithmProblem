@@ -18,7 +18,7 @@ import java.util.Arrays;
  * @author liang
  *
  */
-public class NextPermutation {
+public class NextPermutation_31 {
 
 	/**
 	 * 全排列

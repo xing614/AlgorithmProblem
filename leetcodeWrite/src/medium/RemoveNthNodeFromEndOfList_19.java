@@ -1,6 +1,6 @@
 package medium;
 /**
- * 删除链表的倒数第N个节点
+ * 19. 删除链表的倒数第N个节点
  * 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
 
 示例：
@@ -18,7 +18,7 @@ package medium;
  * @author liang
  *
  */
-public class RemoveNthNodeFromEndOfList {
+public class RemoveNthNodeFromEndOfList_19 {
 	/**
 	 * Definition for singly-linked list.
 	 * public class ListNode {

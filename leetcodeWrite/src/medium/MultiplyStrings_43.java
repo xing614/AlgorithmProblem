@@ -20,7 +20,7 @@ num1 和 num2 均不以零开头，除非是数字 0 本身。
  * @author liang
  *
  */
-public class MultiplyStrings {
+public class MultiplyStrings_43 {
 	/**
 	 * 假设两个整数的长度分别为了l1和l2，则其最后结果长度为l1+l2（最后有进位）或者l1+l2-1（最后没有有进位）。
 	 * 因此，可以先用长度为l1+l2的数组记录结果，最后再转成字符串。

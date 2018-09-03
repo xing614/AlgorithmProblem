@@ -1,25 +1,25 @@
 package medium;
 
 /**
- * ×î³¤»ØÎÄ×Ó´®
- * ¸ø¶¨Ò»¸ö×Ö·û´® s£¬ÕÒµ½ s ÖĞ×î³¤µÄ»ØÎÄ×Ó´®¡£Äã¿ÉÒÔ¼ÙÉè s µÄ×î´ó³¤¶ÈÎª1000¡£
+ * 5. æœ€é•¿å›æ–‡å­ä¸²
+ * ç»™å®šä¸€ä¸ªå­—ç¬¦ä¸² sï¼Œæ‰¾åˆ° s ä¸­æœ€é•¿çš„å›æ–‡å­ä¸²ã€‚ä½ å¯ä»¥å‡è®¾ s çš„æœ€å¤§é•¿åº¦ä¸º1000ã€‚
 	
-	Ê¾Àı 1£º
+	ç¤ºä¾‹ 1ï¼š
 	
-	ÊäÈë: "babad"
-	Êä³ö: "bab"
-	×¢Òâ: "aba"Ò²ÊÇÒ»¸öÓĞĞ§´ğ°¸¡£
-	Ê¾Àı 2£º
+	è¾“å…¥: "babad"
+	è¾“å‡º: "bab"
+	æ³¨æ„: "aba"ä¹Ÿæ˜¯ä¸€ä¸ªæœ‰æ•ˆç­”æ¡ˆã€‚
+	ç¤ºä¾‹ 2ï¼š
 	
-	ÊäÈë: "cbbd"
-	Êä³ö: "bb"
+	è¾“å…¥: "cbbd"
+	è¾“å‡º: "bb"
  * @author liang
  *
  */
-public class LongestPalindromicSubstring {
+public class LongestPalindromicSubstring_5 {
 	/**
-	 * ±©Á¦ÆÆ½â£º±éÀúËùÓĞ×Ó´®£¬ÅĞ¶ÏÃ¿¸ö×Ó´®ÊÇ·ñÊÇ»ØÎÄ´® O(n)
-	 * ´Ó×î³¤(0~n)×Ö·û´®¿ªÊ¼ÅĞ¶Ï£¬²»Îª»ØÎÄÔòÅĞ¶Ï(0~(n-1)),(1~n),(0~(n-2)),(1~(n-1))£¬ÕâÑù×îÏÈ ÕÒµ½µÄÊÇ×î³¤µÄ
+	 * æš´åŠ›ç ´è§£ï¼šéå†æ‰€æœ‰å­ä¸²ï¼Œåˆ¤æ–­æ¯ä¸ªå­ä¸²æ˜¯å¦æ˜¯å›æ–‡ä¸² O(n)
+	 * ä»æœ€é•¿(0~n)å­—ç¬¦ä¸²å¼€å§‹åˆ¤æ–­ï¼Œä¸ä¸ºå›æ–‡åˆ™åˆ¤æ–­(0~(n-1)),(1~n),(0~(n-2)),(1~(n-1))ï¼Œè¿™æ ·æœ€å…ˆ æ‰¾åˆ°çš„æ˜¯æœ€é•¿çš„
 	 * @param s
 	 * @return
 	 */
@@ -33,7 +33,7 @@ public class LongestPalindromicSubstring {
     	}
 		return s;
     }
-    //ÅĞ¶ÏÊÇ·ñÊÇ»ØÎÄ×Ó´®
+    //åˆ¤æ–­æ˜¯å¦æ˜¯å›æ–‡å­ä¸²
     public static boolean isLongest(String s,int left,int right) {
     	while(left<right) {
     		if(s.charAt(left) == s.charAt(right)) {
@@ -47,7 +47,7 @@ public class LongestPalindromicSubstring {
     }
     
     /**
-     * ´ÓÖĞĞÄµãÏòÁ½±ßÀ©É¢Ñ°ÕÒ×î³¤»ØÎÄ´®
+     * ä»ä¸­å¿ƒç‚¹å‘ä¸¤è¾¹æ‰©æ•£å¯»æ‰¾æœ€é•¿å›æ–‡ä¸²
      * @param s
      * @return
      */
@@ -56,11 +56,11 @@ public class LongestPalindromicSubstring {
     	String check = "";
     	if(s.length() == 1) return s;
     	for(int i=0;i<s.length();i++) {
-    		check = checkLongest(s,i,i);//Ñ°ÕÒÒÔiÎªÖĞĞÄµÄ×î³¤×Ó´®
+    		check = checkLongest(s,i,i);//å¯»æ‰¾ä»¥iä¸ºä¸­å¿ƒçš„æœ€é•¿å­ä¸²
     		if(check.length()>resu.length()) {
     			resu = check;
     		}
-    		check = checkLongest(s,i,i+1);//Ñ°ÕÒÒÔiºÍi+1¶Ô³ÆµÄ×î³¤×Ó´®
+    		check = checkLongest(s,i,i+1);//å¯»æ‰¾ä»¥iå’Œi+1å¯¹ç§°çš„æœ€é•¿å­ä¸²
     		if(check.length()>resu.length()) {
     			resu = check;
     		}
