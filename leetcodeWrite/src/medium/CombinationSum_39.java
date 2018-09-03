@@ -34,7 +34,7 @@ candidates 中的数字可以无限制重复被选取。
  * @author liang
  *
  */
-public class CombinationSum {
+public class CombinationSum_39 {
 
 	/**
 	 * 回溯法
@@ -69,8 +69,10 @@ public class CombinationSum {
 		for(int i =ind;i<candidates.length;i++) {
 			if(candidates[i] > target) return;
 			temp.add(candidates[i]);
+			System.out.println(candidates.length);
 			dfs(candidates,target-candidates[i],i,temp,res);
-			temp.remove(temp.size()-1);
+			temp.remove(temp.size()-1);//这里是-1
+			
 		}
 
 	}

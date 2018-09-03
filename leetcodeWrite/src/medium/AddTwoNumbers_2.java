@@ -1,31 +1,32 @@
 package medium;
 /**
- * ¸ø¶¨Á½¸ö·Ç¿ÕÁ´±íÀ´±íÊ¾Á½¸ö·Ç¸ºÕûÊı¡£Î»Êı°´ÕÕÄæĞò·½Ê½´æ´¢£¬ËüÃÇµÄÃ¿¸ö½ÚµãÖ»´æ´¢µ¥¸öÊı×Ö¡£½«Á½ÊıÏà¼Ó·µ»ØÒ»¸öĞÂµÄÁ´±í¡£
+ * 2. ä¸¤æ•°ç›¸åŠ 
+ * ç»™å®šä¸¤ä¸ªéç©ºé“¾è¡¨æ¥è¡¨ç¤ºä¸¤ä¸ªéè´Ÿæ•´æ•°ã€‚ä½æ•°æŒ‰ç…§é€†åºæ–¹å¼å­˜å‚¨ï¼Œå®ƒä»¬çš„æ¯ä¸ªèŠ‚ç‚¹åªå­˜å‚¨å•ä¸ªæ•°å­—ã€‚å°†ä¸¤æ•°ç›¸åŠ è¿”å›ä¸€ä¸ªæ–°çš„é“¾è¡¨ã€‚
 	
-	Äã¿ÉÒÔ¼ÙÉè³ıÁËÊı×Ö 0 Ö®Íâ£¬ÕâÁ½¸öÊı×Ö¶¼²»»áÒÔÁã¿ªÍ·¡£
+	ä½ å¯ä»¥å‡è®¾é™¤äº†æ•°å­— 0 ä¹‹å¤–ï¼Œè¿™ä¸¤ä¸ªæ•°å­—éƒ½ä¸ä¼šä»¥é›¶å¼€å¤´ã€‚
 	
-	Ê¾Àı£º
+	ç¤ºä¾‹ï¼š
 	
-	ÊäÈë£º(2 -> 4 -> 3) + (5 -> 6 -> 4)
-	Êä³ö£º7 -> 0 -> 8
-	Ô­Òò£º342 + 465 = 807
+	è¾“å…¥ï¼š(2 -> 4 -> 3) + (5 -> 6 -> 4)
+	è¾“å‡ºï¼š7 -> 0 -> 8
+	åŸå› ï¼š342 + 465 = 807
  * @author liang
  *
  */
-public class AddTwoNumbers {
+public class AddTwoNumbers_2 {
 
 
 	/*
-	 * ·½°¸Ò»,l1»òl2²»Ò»Ñù³¤Ê±£¬¶ÌµÄ²¹ÉÏ
+	 * æ–¹æ¡ˆä¸€,l1æˆ–l2ä¸ä¸€æ ·é•¿æ—¶ï¼ŒçŸ­çš„è¡¥ä¸Š
 	 */
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if (l1 == null || l2 == null) {
             return null;
         }
-    	ListNode tem = new ListNode(0);//µÚÒ»¸öÎ»ÖÃÎª0£¬´ÓµÚ¶ş¸öÎ»ÖÃ¿ªÊ¼¼ÆÊı£¬·µ»ØÊ±´ÓµÚ¶ş¸ö¿ªÊ¼
+    	ListNode tem = new ListNode(0);//ç¬¬ä¸€ä¸ªä½ç½®ä¸º0ï¼Œä»ç¬¬äºŒä¸ªä½ç½®å¼€å§‹è®¡æ•°ï¼Œè¿”å›æ—¶ä»ç¬¬äºŒä¸ªå¼€å§‹
     	ListNode result = tem;
-    	int valueTen = 0;//Ê®Î»
-    	int valueIndi = 0;//¸öÎ»
+    	int valueTen = 0;//åä½
+    	int valueIndi = 0;//ä¸ªä½
     	int all = 0;
     	while(l1!=null && l2!=null) {
     		all = l1.val+l2.val+valueTen;
@@ -40,13 +41,13 @@ public class AddTwoNumbers {
     			break;
     		}
     		if(l1 ==null) {
-    			l1 = new ListNode(0);//Èç¹ûl1ÊÇ¿Õ£¬¾Í²¹ÉÏÔÙ¼ÆËã
+    			l1 = new ListNode(0);//å¦‚æœl1æ˜¯ç©ºï¼Œå°±è¡¥ä¸Šå†è®¡ç®—
     		}
     		if(l2 ==null) {
-    			l2 = new ListNode(0);//Èç¹ûl2ÊÇ¿Õ£¬¾Í²¹ÉÏÔÙ¼ÆËã
+    			l2 = new ListNode(0);//å¦‚æœl2æ˜¯ç©ºï¼Œå°±è¡¥ä¸Šå†è®¡ç®—
     		}
     	}
-    	if(valueTen!=0)//×îºóÒ»Î»
+    	if(valueTen!=0)//æœ€åä¸€ä½
     		tem.next = new ListNode(valueTen);
 		return result.next;
     }
@@ -58,7 +59,7 @@ public class AddTwoNumbers {
 		ListNode l2 = new ListNode(5);//564
 		l2.next = new ListNode(6);
 		l2.next.next = new ListNode(4);
-		//Ó¦¸ÃÊÇ708
+		//åº”è¯¥æ˜¯708
 		ListNode ll = addTwoNumbers(l1,l2);
 		while(ll!=null) {
 			System.out.println(ll.val);

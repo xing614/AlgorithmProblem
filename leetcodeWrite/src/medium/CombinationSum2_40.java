@@ -36,7 +36,7 @@ candidates 中的每个数字在每个组合中只能使用一次。
  * @author liang
  *
  */
-public class CombinationSum2 {
+public class CombinationSum2_40 {
 	/**
 	 * 回溯法
 	 * 
