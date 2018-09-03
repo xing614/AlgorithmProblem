@@ -3,7 +3,7 @@ package medium;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * 电话号码的字母组合  
+ * 17. 电话号码的字母组合  
  * 看手机 九宫格  abc在2  edf在3 等。
  * 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
 
@@ -20,7 +20,7 @@ import java.util.List;
  * @author liang
  *
  */
-public class LetterCombinationsOfAPhoneNumber {
+public class LetterCombinationsOfAPhoneNumber_17 {
 	
 	/**
 	 * 回溯法

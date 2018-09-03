@@ -20,7 +20,7 @@ package medium;
  * @author liang
  *
  */
-public class JumpGame {
+public class JumpGame_55 {
 
 	/**
 	 * 动态规划

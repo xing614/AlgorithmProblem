@@ -1,5 +1,6 @@
 package medium;
 /**
+ * 29. 两数相除
  * 给定两个整数，被除数 dividend 和除数 divisor。将两数相除，要求不使用乘法、除法和 mod 运算符。
 
 返回被除数 dividend 除以除数 divisor 得到的商。
@@ -20,8 +21,9 @@ package medium;
  * @author liang
  *
  */
-public class DivideTwoInteger {
+public class DivideTwoInteger_29 {
 
+	//结果未通过
 	/**
 	 * 一般方法就是被除数一直减去除数，O（N）
 	 * 

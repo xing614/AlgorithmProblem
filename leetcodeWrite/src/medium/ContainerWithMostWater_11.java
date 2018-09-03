@@ -1,17 +1,18 @@
 package medium;
 /**
- * ¸ø¶¨ n ¸ö·Ç¸ºÕûÊý a1£¬a2£¬...£¬an£¬Ã¿¸öÊý´ú±í×ø±êÖÐµÄÒ»¸öµã (i, ai) ¡£»­ n Ìõ´¹Ö±Ïß£¬Ê¹µÃ´¹Ö±Ïß i µÄÁ½¸ö¶Ëµã·Ö±ðÎª (i, ai) ºÍ (i, 0)¡£ÕÒ³öÆäÖÐµÄÁ½ÌõÏß£¬Ê¹µÃËüÃÇÓë x Öá¹²Í¬¹¹³ÉµÄÈÝÆ÷¿ÉÒÔÈÝÄÉ×î¶àµÄË®¡£
+ * 11. ç››æœ€å¤šæ°´çš„å®¹å™¨
+ * ç»™å®š n ä¸ªéžè´Ÿæ•´æ•° a1ï¼Œa2ï¼Œ...ï¼Œanï¼Œæ¯ä¸ªæ•°ä»£è¡¨åæ ‡ä¸­çš„ä¸€ä¸ªç‚¹ (i, ai) ã€‚ç”» n æ¡åž‚ç›´çº¿ï¼Œä½¿å¾—åž‚ç›´çº¿ i çš„ä¸¤ä¸ªç«¯ç‚¹åˆ†åˆ«ä¸º (i, ai) å’Œ (i, 0)ã€‚æ‰¾å‡ºå…¶ä¸­çš„ä¸¤æ¡çº¿ï¼Œä½¿å¾—å®ƒä»¬ä¸Ž x è½´å…±åŒæž„æˆçš„å®¹å™¨å¯ä»¥å®¹çº³æœ€å¤šçš„æ°´ã€‚
 
-×¢Òâ£ºÄã²»ÄÜÇãÐ±ÈÝÆ÷£¬n ÖÁÉÙÊÇ2¡£
+æ³¨æ„ï¼šä½ ä¸èƒ½å€¾æ–œå®¹å™¨ï¼Œn è‡³å°‘æ˜¯2ã€‚
 
-±íÊ¾£º¸øÒ»×éÊý×é¡£ÕÒµ½×î´óµÄ(j-i)*(min(aj,ai)),¾ÍÊÇÇó¾ØÐÎÃæ»ý×î´óµÄÖµ
+è¡¨ç¤ºï¼šç»™ä¸€ç»„æ•°ç»„ã€‚æ‰¾åˆ°æœ€å¤§çš„(j-i)*(min(aj,ai)),å°±æ˜¯æ±‚çŸ©å½¢é¢ç§¯æœ€å¤§çš„å€¼
  * @author liang
  *
  */
-public class ContainerWithMostWater {
+public class ContainerWithMostWater_11 {
 	/**
-	 * ±©Á¦½â·¨£¬Á½²ãÑ­»·ÕÒ×î´ó
-	 * µ«ÊÇ³¬Ê±ÁË
+	 * æš´åŠ›è§£æ³•ï¼Œä¸¤å±‚å¾ªçŽ¯æ‰¾æœ€å¤§
+	 * ä½†æ˜¯è¶…æ—¶äº†
 	 * @param height
 	 * @return
 	 */
@@ -27,10 +28,10 @@ public class ContainerWithMostWater {
         
     }
     /**
-     * µÚ¶þÖÖ
-     * ´Ó×î×ó×îÓÒÁ½²à¿ªÊ¼ÕÒ×î´óÖµ£¬Ã¿´Î×î×ó»ò×îÓÉÏòÁíÒ»²àÒÆ¶¯£¬
-     * Èç Èç¹ûa[left]<a[right]£¬Ôòleft++£¬ÒòÎªÕß²ÅÓÐ¿ÉÄÜÈÃ¾ØÐÎÃæ»ýµÄÖµ±ä´ó
-     * Ê±¼ä¸´ÔÓ¶Èn
+     * ç¬¬äºŒç§
+     * ä»Žæœ€å·¦æœ€å³ä¸¤ä¾§å¼€å§‹æ‰¾æœ€å¤§å€¼ï¼Œæ¯æ¬¡æœ€å·¦æˆ–æœ€ç”±å‘å¦ä¸€ä¾§ç§»åŠ¨ï¼Œ
+     * å¦‚ å¦‚æžœa[left]<a[right]ï¼Œåˆ™left++ï¼Œå› ä¸ºè€…æ‰æœ‰å¯èƒ½è®©çŸ©å½¢é¢ç§¯çš„å€¼å˜å¤§
+     * æ—¶é—´å¤æ‚åº¦n
      * @param height
      * @return
      */

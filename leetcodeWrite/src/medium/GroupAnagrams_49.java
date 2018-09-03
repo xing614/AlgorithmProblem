@@ -24,7 +24,7 @@ import java.util.List;
  * @author liang
  *
  */
-public class GroupAnagrams {
+public class GroupAnagrams_49 {
 
 	/**
 	 * abc cba acb每个字符串重排序后会成为相同的字符串，将该字符串成为key，，将所有错位词都保存到字符串数组中，建立key和字符串数组之间的映射，最后再存入结果res中即可
@@ -67,7 +67,7 @@ public class GroupAnagrams {
     
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		GroupAnagrams ga = new GroupAnagrams();
+		GroupAnagrams_49 ga = new GroupAnagrams_49();
 		String[] strs = {"eat","tea","tan","ate","nat","bat"};
 		ga.groupAnagrams(strs);
 	}

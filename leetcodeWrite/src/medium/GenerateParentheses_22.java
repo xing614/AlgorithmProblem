@@ -20,7 +20,7 @@ import java.util.List;
  * @author liang
  *
  */
-public class GenerateParentheses {
+public class GenerateParentheses_22 {
 	
 	/**
 	 * 二叉树，递归

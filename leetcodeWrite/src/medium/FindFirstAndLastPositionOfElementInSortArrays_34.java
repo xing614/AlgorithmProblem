@@ -19,7 +19,7 @@ package medium;
  * @author liang
  *
  */
-public class FindFirstAndLastPositionOfElementInSortArrays {
+public class FindFirstAndLastPositionOfElementInSortArrays_34 {
 	/**
 	 * 思路：二分查找，分别查找最小位置和最大位置，区别就是二分查找时找最小位置就右指针在中位置减一，找最大位置就左指针加一
 	 * @param nums
