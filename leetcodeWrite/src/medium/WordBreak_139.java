@@ -8,6 +8,7 @@ import java.util.List;
  */
 
 /**
+ * 139. 单词拆分
  * 单词拆分
  * 给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。
 
@@ -33,7 +34,7 @@ import java.util.List;
  * @author liang
  *
  */
-public class WordBreak {
+public class WordBreak_139 {
 	
 	/**
 	 * dfs，使用一个二维数组维护，该数组保存字符串从i到j的子串在字典中是否有，有就为true
