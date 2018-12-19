@@ -43,7 +43,7 @@ public class FindRightInterval_436 {
 	/**
 	 * 使用TreeMap 
 	 * 首先将所有起始位置和他的序号放入TreeMap（key是位置I的起始位置，value是I）当中
-	 * 随后遍历每个位置的结束为止，使用TreeMap的方法，使用当前序号结束位置的大小找到TreeMap中第一个大于等于其结束位置的Entry，如果存在则取出value，不然就返回-1
+	 * 随后遍历每个位置的结束位置，使用TreeMap的方法，使用当前序号结束位置的大小找到TreeMap中第一个大于等于其结束位置的Entry，如果存在则取出value，不然就返回-1
 	 * @param intervals
 	 * @return
 	 */
