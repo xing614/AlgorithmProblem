@@ -1,40 +1,277 @@
+
 ------------------------------------------------------------
 简单
 20. 有效的括号ValidParentheses:使用stack进行出栈入栈，如果为左括号一律入栈，右括号就判断栈的最后一个是否与之匹配，不匹配就false，匹配就将最后一个和这个右括号都出栈
 26. 删除排序数组中的重复项RemoveDuplicatesFromSortedArray：维护current作为返回数组长度，每次出现不重复元素，就在nums[current]改变数据，并current++
 21. 合并两个有序链表MergeTwoSortedLists:while判断l1和l2是否还有元素，有就对这俩第一个元素判断谁小，小的就提取数据，然后l1=l1.next，最后再把多余的元素放入
 27. 移除元素:RemoveElement:与26差不多，维护一个current作为当前位置，如果num[index]！=val，则num[current++]=num[index]，如果一样就不会被覆盖到原数组中
+38. 报数CountAndSay:依次获取每一个字符串，当前字符串根据前一个字符串，使用count计数当前位置连续出现同一个数的次数，不一样时count重新=1
+53. 最大子序和MaximumSubarray:定义两个变量res和curSum， 其中res保存最终要返回的结果，即最大的子数组之和，curSum初始值为0，每遍历一个数字num，比较curSum + num和num中的较大值存入curSum，然后再把res和curSum中的较大值存入res，以此类推直到遍历完整个数组，可得到最大子数组的值存在res中;或者使用分治法
+58. 最后一个单词的长度LengthOfLastWord_58：从末位搜索将所有空格去掉，再从最后一个字母开始搜索,res++,index--，直到找到最后一个空格或Index=-1
+61. 旋转链表RoateList_61：先遍历一遍，得出链表长度 len，注意 k 可能大于 len，因此令 k% = len。将尾节点 next 指针指向首节点，形成一个环，接着往后跑 len -  k 步，从这里断开，就是要求的结果了。
+189. 旋转数组RotateArray:类似61的方法，就是最后翻转数组时方式不一样，这里先翻转数组前部分，在翻转后部分，最后整体再翻转一遍
+67. 二进制求和AddBinary_67:维护一个变量为进位数，然后就两个数每位依次相加，取余 除2
+69. x 的平方根SqrtX_69:牛顿迭代法或者二分搜索法：二分搜索法，每次找中间数，平方看与x相等不 
+83. 删除排序链表中的重复元素 RemoveDuplicatesFromSortedList_83：因为是有序链表，所以去重只需要比较新来的节点和前面一个节点是否相同，如果相同直接删除就可以了。因为在链表不为空的情况下，第一个节点是不可能会被删除的，所以我们不需要向前面那样，在第一个节点之前创建一个节点，我们直接从第二个节点开始比较。
+88. 合并两个有序数组MergeSortedArray_88:采用倒序插入，从后往前移动
+198. 打家劫舍HouseRobber_198：动态规划，可以用数组也可以用两个变量
+206. 反转链表206:迭代或递归，迭代就是得到下一个节点，更改当前节点指向，将指针往下移动，直到过完整个linkedlist.
+263. 丑数 UglyNumber_263:三个while 用来除以2、3、5 最后判断是否值为1
+496. 下一个更大元素 I NextGreaterElementI_496：使用stack栈先进后出原则，将当前元素与栈头比较大小，大于则当前元素时栈头下一个大元素 同时出栈，小于则将当前元素压栈，使用map保存下一个大元素，最后将nums1的元素在map中寻找
 ------------------------------------------------------------
 中等
+2. 两数相加AddTwoNumbers_2：使用两个链表表示两个数。两个链表同时遍历，然后每个同样的位置求和，如果哪个链表为空，就用0补上，直到都为空
+3. 无重复字符的最长子串LongestSubstringWithoutRepeatingCharacters_3：字符串常用手段。有左右两个指针，关注中间字符串，每次判断中选择左/右一个指针向前移动，维护一个HashSet,正常情况下移动右窗口，如果没有出现重复则继续移动右窗口；或者二次循环 
+5. 最长回文子串LongestPalindromicSubstring_5：两种办法。1暴力破解：遍历所有子串，判断每个子串是否是回文串 O(n)，从最长(0~n)字符串开始判断，不为回文则判断(0~(n-1)),(1~n),(0~(n-2)),(1~(n-1))，这样最先 找到的是最长的；第二种是 从中心点向两边扩散寻找最长回文串
+6. Z字形变换ZigZagConversion_6：看规律 分成num行，第一行和最后一行的数据是前后相差(2*num-2)位置的字符；
+11. 盛最多水的容器ContainerWithMostWater_11:可以直接两层遍历，长度*宽度，与最大值比较；或者while(left<right)，然后根据Max左右指针往中心移动
+14. 最长公共前缀LongestCommonPrefix_14：设变量i、j,i为遍历字符串中的字符，j为遍历字符集[]中的字符串，依次判断，如果到达某一字符串尾部，说明判断最长公共前缀结束
 16.最接近的三数之和Sum3Closest：数组先排序，固定一个数，使用left和right遍历数组，找最接近数和  O（n^2）
 17.电话号码的字母组合LetterCombinationsOfAPhoneNumber:回溯法，类深度遍历，从头遍历到低后 退回一层再向下遍历，再退，直到结束
 18.两数之和，三数之和，四数之和：一般方法是先排序，固定一个/两个数，令选俩变量遍历。这里可以使用深度遍历方法具体看Sum4，但是这种方法容易超出时间限制，所以还是使用两层for固定Ij，再用left和right比较好
 19.删除链表的倒数第N个节点RemoveNthNodeFromEndOfList:维护两个指针，faster先走n步，之后faster和slower同时走，faster.next=null的时候slower位置是倒数n位置的prew，然后用slower删除next即可
 22.括号生成GenerateParentheses:要生成适当的括号字符串，思考二叉树，，使用递归，左分支都加左括号，右分支都加右括号，设left和right代表剩下的左（右）括号数，剩余左要小于剩余右
-24.两两交换链表中的节点：设置三个指针，设两个交换的为一组Group，用两个指针指向，再用一个指向这组的前一个节点，利用这三个指针交换链表
+24.两两交换链表中的节点SwapNodeInPairs_24：设置三个指针，设两个交换的为一组Group，用两个指针指向，再用一个指向这组的前一个节点，利用这三个指针交换链表
+24. 两两交换链表中的节点SwapNodeInPairs_24：每组两个节点，然后交换这俩，Prev，A1，A2；A1指向A2后继，Prev指向A2，Prev的后继指向A1，最后Prev=A1
+*29. 两数相除 DivideTwoInteger_29：这道题未通过
+31. 下一个排列NextPermutation_31：具体排列过程是 看当前排列顺序 比如1 2 7 4 3 1，看到从7开始后面都是降序，即锁定了1 和 2，它的下一个排列是将2锁定为3，然后升序排列后面四个数，即 1 3 1 2 4 7
 33. 搜索旋转排序数组:使用二分查找法，然后根据数组旋转特性区分low和high
-24. 两两交换链表中的节点：每组两个节点，然后交换这俩，Prev，A1，A2；A1指向A2后继，Prev指向A2，Prev的后继指向A1，最后Prev=A1
 34. 在排序数组中查找元素的第一个和最后一个位置FindFirstAndLastPositionOfElementInSortArrays:使用两个二分查找，分别找第一位置和最后一个位置
 36. 有效的数独ValidSudoku: 判断九宫格是否可用，最普通方法就是一次判断 行 列 九宫格是否都符合要求，分别维护一个数组，比如row[1]=true表示 该行存在1这个元素，如果重复存在就false
-39. 组合总和CombinationSum：回溯法
-43.字符串相乘MultiplyStrings:两个字符串相乘，不能直接转成Int，因为位数太大了转成会出错，所以每次取两个数一位相乘放入自己创建的数组v[i+j]位置，最后在将这个数组使用Stringbuffer转成字符串
+39. 组合总和CombinationSum_39：回溯法
+43. 字符串相乘MultiplyStrings:两个字符串相乘，不能直接转成Int，因为位数太大了转成会出错，所以每次取两个数一位相乘放入自己创建的数组v[i+j]位置，最后在将这个数组使用Stringbuffer转成字符串
 46. 全排列Permutations：回溯法，每次交换两个数据
 47. 全排列 II Permutations2:dfs 使用一个数组维护每个位置的数是否被使用，使用则为1，再要使用的时候则直接跳过，如果当前元素与其前一个元素值相同 且 前元素未被加到list中，跳过该元素  list是当前维护的被选中的元素集合
-60. 第k个排列PermutationSequence：找全排列顺序的第k的排列，找规律  k/n走过几轮，k=k%n是下一轮的k值
 49. 字母异位词分组GroupAnagrams: 将由相同字母组成的不同字符串分成一组，可以使用map，key为字符串排序后相同的，value为list<String>存放每一个异位词
 50. Pow(x, n):递归法，当成n/2 把x的n次方划分成两个x的n/2次方相乘，然后递归求解子问题
 54. 螺旋矩阵SpiralMatrix:就是蛇形矩阵 用一个数组保存每个数是否被遍历到，遍历到就不走了然后i--或j++什么的
 55. 跳跃游戏JumpGame：动态规划，保存一个全局解和一个局部解，局部解为i+nums[i]当前位置所能走的最大值，局部解为glo = Math.max(loc, glo)当前位置最大值和之前所有位置最大值的比较
 56. 合并区间MergeIntervals:重叠区间合并，先排序，使用一个Comparator，然后依次判断下一个start是否在前一个区间内
 59. 螺旋矩阵 IISpiralMatrix2:这个是给定n，然后生成n*n的蛇形矩阵,方法是设定四个方向一轮一轮的走，走过一轮n-2,然后回到原地后向右下走一格
+60. 第k个排列PermutationSequence：找全排列顺序的第k的排列，找规律  k/n走过几轮，k=k%n是下一轮的k值
+62. 不同路径UniquePaths_62：递归或者动态规划，ij位置的路径数为ways[i][j],等于到达它上点的路径数与它左点的路径数之和
+63. 不同路径 IIUniquePath2_63:比62多了个障碍物，取障碍物位置路径数为0
+64. 最小路径和MinimumPathSum_64：动态规划
+68. 文本左右对齐TextJustification_68:1、每一行选择K的单词，K个单词的长度+K-1个空格的长度必须要小于maxWidth，这里每次选择满足这个条件的最大值就可以 .2、对于已经选定了K个单词，首先计算基本空格，也就是space=（maxWidth-所有单词的长度）/ （k-1），但是还有多余出一部分空格，那么就在附加空格的时候，从左边开始每次多加一个，满足题目的左边的空格大于等于右边的（至多多一个） 
+71. 简化路径SimplifyPath_71:使用栈
+73. 矩阵置零SetMatrixZeroes_73：使用两个额外空间，用于判断第一列/第一行是否要变为0；然后利用第一行和第一列的元素去标记该行或该列是否在更新时要全部变成0。
+74. 搜索二维矩阵SearchA2DMatrix_74：使用二分搜索法直接搜索二维数组
+75. 颜色分类SortColors_75：设一个指针red 在开头，blue 在最后。想法就是，遇到红色0，就交换，把0放到最左边去；遇到蓝色2就交换，把2都放到最右边去，这样1就会被保留在最中间。
+77. 组合Combinations_77：找出n个数的k个数组合，使用回溯法
+78. 子集Subsets_78:回溯法，dfs当成一个二叉树，选或不选
+80. 删除排序数组中的重复项 II RemoveDuplicatesFromSortedArray2_80：维护一个bool isTwice每次判断是否出现过两次，Len指针每次在nums[len]塞数据
+81. 搜索旋转排序数组 II SearchInRotatedSortedArray2_81：二分搜索 ，注意细节
+82. 删除排序链表中的重复元素 IIRemoveDuplicatesFromSortedList2_82: (同类83题)维护三个指针，分别指向重复元素，重复元素前一个不重复的，重复元素后一个不重复的，维护一个bool判断是否重复，不重复就三个指针都往后移动，重复就移动第三个指针直到找到与第二个指针数据不一样的，然后1.next = 3，注意有可能3.next = null，这时让1.next=null
+86. 分隔链表PartitionList_86:对链表进行操作
+89. 格雷编码GrayCode_89:先观察数字之间的前后关系，
+90. 子集 II Subsets2_90:回溯法，跳过重复的
+92. 反转链表 IIReverseLinkedList2_92:反转中间部分链表
+91. 解码方法DecodeWays_91:动态规划，注意限定条件
+94. 二叉树的中序遍历BinaryTreeInorderTraversal_94：三种方法，1递归，2迭代，3空间复杂度为1的迭代
+95. 不同的二叉搜索树 II UniqueBinarySearchTrees2_95:将每个节点当成根节点，生成所有可能的二叉树，使用递归分叉检索所有可能
+120. 三角形最小路径和Triangle_120:动态规划，二维数组表示从第一行到第i行第j个数的最小路径值，这个值由它上一行临近的两个数确定。如果空间O（n）的话就把三角倒过来，从下往上走，res[i]由res[i]和res[i+1]确定
+131. 分割回文串PalindromePartitioning_131:回溯法，再剪枝掉不符合的子串，每次从i找到一个回文串，再找下一个
+147. 对链表进行插入排序InsertionSortList_147：插入排序，链表先设置一个空链表，一个一个往里插入
+148. 排序链表SortList_148 :归并排序 保证NlogN,先找中间在合并
+96. 不同的二叉搜索树UniqueBinarySearchTrees_96:动态规划，先看每个根节点下的规律
+98. 验证二叉搜索树ValidateBinarySearchTree_98：使用中序遍历，然后再判断是否符合条件；第二种使用栈；第三种是设置一个前置pre,用中序遍历的方式，比较当前节点和上次遍历节点的值得大小，如果当前节点的值小于等于上一次遍历的节点的值则返回false,依此递归遍历即可。
+102. 二叉树的层次遍历BinaryTreeLevelOrderTraversal_102:一层一层便利，可以使用队列，先进先出原则，每次获得一个节点的左右子节点放入队列，然后弹出队头放入数组
+103. 二叉树的锯齿形层次遍历BinaryTreeZigzagLevelOrderTraversal_103：还是使用队列，设置一个翻转标识，如果要翻转则将当前行存储的ArrayList翻转放入res，
+105. 从前序与中序遍历序列构造二叉树 ConstructBinaryTreeFromPreorderAndInorderTraversal_105：递归，利用pre数组元素在inord数组查找位置、
+106. 从中序与后序遍历序列构造二叉树ConstructBinaryTreeFromInorderAndPostorderTraversal_106:递归 与105类似
+109. 有序链表转换二叉搜索树ConvertSortedListToBinarySearchTree_109：用双指针找到链表中间节点设为根节点，再在中间以右找右子节点，从中间节点中断，在左侧找左子节点，递归
+113. 路径总和 II PathSum2_113：DFS 注意遍历下一层之前要将list复制放入，这样不对原来List造成影响，保证每一层遍历都是独立一列
+114. 二叉树展开为链表FlattenBinaryTreeToLinkedList_114：就是先序遍历变成链表 ，利用栈，每次 将右子树放入栈，左子树移到右子树，左子树置空，当左孩子为空时而栈不空时，就弹出栈，作为右孩子
+116. 填充同一层的兄弟节点PopulatingNextRightPointersInEachNode_116：遍历，利用根节点子树Next变量保存它旁边的节点
+117. 填充同一层的兄弟节点 II PopulatingNextRightPointersInEachNode2_117：和116的区别是二叉树不规律，不一定是满二叉树，类似使用队列，front用于保存每行的所有节点，next用于存储front下一行的所有节点，然后每一行的前一个节点Next=下一个节点
+127. 单词接龙WordLadder_127：广度优先搜索查找最短路径
+129. 求根到叶子节点数字之和SumRootToLeafNumbers_129:使用递归，每次进入Left或right sum+
+130. 被围绕的区域SurroundedRegions_130：被围绕的区间不会存在于边界上，换句话说，任何边界上的 'O' 都不会被填充为 'X'。 任何不在边界上，或不与边界上的 'O' 相连的 'O' 最终都会被填充为 'X'。如果两个元素在水平或垂直方向相邻，则称它们是“相连”的。
+133. 克隆图CloneGraph_133：图的遍历，BFS，
+134. 加油站GasStation_134：从一个点绕一圈是否可以成功问题，可以用贪心算，也可以用两个指针维护起点和当前到的点判断是否可以走过
+137. 只出现一次的数字 II SingleNumber2_137:使用map保存出现的Int和出现的次数，最后遍历不是3次的返回。方法二可以给数组排序，然后判断挨着的三个是否相同
+138. 复制带随机指针的链表CopyListWithRandomPointer_138：与克隆图133相似，不同是这个除了节点，还有next,random，先遍历克隆所有节点，在遍历克隆所有next和random
+142. 环形链表 II LinkedListCycle2_142：使用map记录访问过的节点，如访问过返回该节点；方法二，使用快慢指针，如果是环总会碰上
+143. 重排链表 ReorderList_143：先使用快慢指针找到中间节点，在中间把链表分为两半，然后后一半翻转，最后依次合并
+144. 二叉树的前序遍历BinaryTreePreorderTraversal_144：可以迭代或递归，迭代使用栈，将根结点入栈 ，进入循环。先弹出栈顶元素，访问它，然后将该元素的右子树入栈，最后将该元素的左子树入栈
+145. 二叉树的后序遍历BinaryTreePostorderTraversal_145:与144迭代类似，不过这里要增加一个栈记录每个节点的右节点是否已经被访问过,只有当左右节点都被访问的前提下才能访问根节点
+150. 逆波兰表达式求值EvaluateReversePolishNotation_150：使用栈，每次遇到运算符则计算栈顶两个元素，然后放回，最后返回栈顶的元素
+151. 翻转字符串里的单词 ReverseWordsInAString_151:方法一 正则表达式；方法二 借助一个堆栈，从前向后遍历字符串，遇到空，跳过，直到非空字符，拼接word，等再次遇到空时，得到一个word，加入堆栈，
+152. 乘积最大子序列MaximumProductSubarray_152:简单动态规划， 递推公式 
+153. 寻找旋转排序数组中的最小值FindMinimumInRotatedSortedArray_153:二分查找
+162. 寻找峰值FindPeakElement_162:O(logN)表示不能完全遍历又因为只需要找到其中的一个峰值，那么，每次对半分，便可以达到logn的复杂度
+165. 比较版本号CompareVersionNumbers_165:先分割字符串成数组，然后一个一个比较
+166. 分数到小数FractionToRecurringDecimal_166:先除，得到整数，然后余数扩大十倍 放入hashmap，接着除计算，得到的结果，如果这个结果在Hm中存在，就说明之后重复了
+173. 二叉搜索树迭代器BinarySearchTreeIterator_173:维护一个栈，先将根结点的左子树全部压栈，每次弹出栈顶元素，若某次弹出的栈顶元素有右子树，此时需要将以该节点的右子树为根的子树的左子节点全部压栈
+179. 最大数 LargestNumber_179：直接将两个数进行拼接，比较是s1+s2大还是s2+s1大
+187. 重复的DNA序列RepeatedDNASequences_187：使用hashmap来处理，出现过一次的 添加的map，在map中判断是否已经存在，存在就放入list中，同时map的value设为-1
+199. 二叉树的右视图BinaryTreeRightSideView_199:可以用层次遍历，每次是最右节点,使用一个null放入队列作为每层节点的间隔符，null前一个节点就是最右节点
+200. 岛屿的个数 NumberOfIslands_200：深度优先遍历，把访问过的改为‘0’，继续遍历
+201. 数字范围按位与BitwiseANDofNumbersRange_201：找规律，m!=n时最后一位必定与后为0，所以每次m和n右移一位后判断m=n，不等就off++，相等就m左移off位得到结果
+207. 课程表CourseSchedule_207：图的dfs遍历，每太看懂.后续理解比如最开始i为0位置，进入dfs判断当前位置是否看过，没看过先设为true,然后遍历i位置图相邻的节点，判断这个节点是否看过，没看过接着设为true，如果看过就说明可以构成一个环，但图不能成环所以返回false
+208. 实现 Trie (前缀树)ImplementTree_208: 对于英文单词的查找，我们完全可以在内部结点中建立26个元素组成的指针数组。如果要查找a，只需要在内部节点的指针数组中找第0个指针即可(b=第1个指针，随机定位)。
+209. 长度最小的子数组MinumumSizeSubarraySum_209:两个指针维护一个窗口,一种更好的调整窗口的办法
+210. 课程表 II CourseSchedule2_210:使用拓扑排序，每次删除一个入度为0的点，用一个list保存每次删除的点（入度为0的点）（入度为0就说明它的前置条件都满足了，可以放入结果了）
+211. 添加与搜索单词 - 数据结构设计AddAndSearchWord_DataStructureDesign_211:使用字典树,，每个节点保存一个字符，以及子节点集合：list，和标记是否是尾节点的isEnd布尔值
+213. 打家劫舍 IIHouseRobber2_213：与198题差不多，就是构成了环，动态规划两个变量
+215. 数组中的第K个最大元素KthLargestElementInAnArray_215：使用最小堆，堆总共可以放入k个元素，先放入数组的前k个，然后遍历数组后面所有元素。或者使用分治，先以第一个元素为标识，利用快排找到它的相对位置，如果这个位置是K-1，就说明这个值是要找的第k大元素；如果不是，这位是<k-1就Left=pos+1,然后接着快排找相对位置
+216. 组合总和 IIICombinationSum3_216：回溯法 dfs
+220. 存在重复元素 IIIContainsDuplicate3_220:使用treeset，只存入k个的元素，每次加一个，数量超过k就删除一个
+222. 完全二叉树的节点个数CountCompleteTreeNodes_222:判断当前位置左右子树高度是否一样，一样就是满二叉树，得2^h-1。不是满二叉树就 root.left+root.right+1
+223. 矩形面积RectangleArea_223:两个矩阵面积相加 再减去重复矩阵
+227. 基本计算器 II BasicCalculator2_227:使用栈，每次计算*/两个运算，+-则在栈保存的int为正负，最后在stack所有数据相加
+228. 汇总区间SummaryRanges_228:返回["0->2","4->5","7"]，循环判断后一个数是否大前一个数1
+229. 求众数 IIMajorityElement2_229:肯定超过n/3元素个数最多有2个，所以就假设两个变量，和他们的count，找出最多的，然后在重新计算这两个变量超没超过n/3
+230. 二叉搜索树中第K小的元素 KthSmallestElementInABst_230:可以使用中序遍历，或者使用栈迭代。
+236. 二叉树的最近公共祖先 LowestCommonAncestorOfABinaryTree_236:使用递归找到公共
+238. 除自身以外数组的乘积ProductOfArrayExceptSelf_238:res作为返回数组，先从右开始算 res[i] = res[i+1]*num[i+1]，这样当前res[]每个位置等于它右侧所有数的积,然后再从左开始 最初 left = 1,res[i] = res[i]*left,left=left*num[i],这样相当于乘以左侧的所有数
+240. 搜索二维矩阵 IISearchA2DMatrix2_240:从第一行最后一个开始搜索，大于目标值就i--,小于目标值就j++
+241. 为运算表达式设计优先级DifferentWaysToAddParentheses_241:分治法+备忘录
+260. 只出现一次的数字 III SingleNumber3_260:先排序，创建有2个元素的数组，对源数组判断相邻元素是否相同
+264. 丑数 II UglyNumber2_264: 动态规划,
+274. H指数 H_Index_274：先排序，设一个变量count，从后遍历，直到一位置值<=count++
+275. H指数 II H_Index_275:二分法，时间复杂度LogN
+279. 完全平方数 PerfectSquares_279:求几个平方数和为n，动态规划，找到所有可能最小情况
+284. 顶端迭代器 PeekingIterator_284:设计一个迭代器，可以实现peek方法。思路是设置一个有效标志位，如果当前值有效就peek输出值，next输出值并设为无效。
+287. 寻找重复数FindTheDuplicateNumber_287：带环的链表  找重复项
+299. 猜数字游戏 BullsAndCows_299：遍历两个字符串，看在某个位置是否相等，如果相等，就A++；如果不相等，就把secret中的字符和guess中的字符再分别存起来；然后再遍历第二遍，第二遍的遍历就是，经过处理的guess字符，会不会在经过处理的secrets的字符里面。如果在，就B++，表明只是放错了位置而已
+300. 最长上升子序列LongestIncreasingSubsequence_300：三种办法 ，1动态规划，2二分查找，3使用treeset删除大于当前元素 添加当前元素
+304. 二维区域和检索 - 矩阵不可变 RangeSumQuery2D_Immutable_304：使用一个二维数组保存从0到每个位置的面积，每个位置面积求的方法是（最大块-左下-右上+左上）
+306. 累加数 AdditiveNumber_306:112358循环判断
+309. 最佳买卖股票时机含冷冻期BestTimeToBuyAndSellStockWithCoolDown_309:动态规划
+313. 超级丑数SuperUglyNumber_313:质数集合可以任意给定，由于我们不知道质数的个数，我们可以用一个idx数组来保存当前的位置，然后我们从每个子链中取出一个数，找出其中最小值，然后更新idx数组对应位置，注意有可能最小值不止一个，要更新所有最小值的位置
+318. 最大单词长度乘积 MaximumProductOfWordLengths_318:怎么判断两个字符是否不含有相同的字符,用一个int，32位；而小写字母只有26个，后26位用来表示对应的字符是否存在。最后两个int相与，如果结果为0，说明两个对应的字符串没有相同的字符！
+319. 灯泡开关 BulbSwitcher_319:看每个位置是否是被变化了奇数次。比如对于6，可以写成1x6、2x3，那么经过整个n次变化，这个位置经历了4次变化，所以是灭的状态；而9可以写成1x9、3x3，那么其经过3次变化，所以是点亮的状态；顺着这个思路，能够开方为整数的数字都是点亮的状态，所以只需要对整个n开方，然后向下取整即可
+322. 零钱兑换 CoinChange_322:动态规划,利用数组dp[i]存储凑齐钱数i时所需硬币的最少数量，遍历coins计算dp[i]的值。coins数组是有序的
+328. 奇偶链表 OddEvenLinkedList_328：设置两个指针，odd奇指针和even偶指针，循环 每次先odd指向even.next，odd后移，然后even指向odd.next，even后移，最后odd.next = even的第一个节点
+331. 验证二叉树的前序序列化VerifyPreorderSerializationOfABinaryTree_331:设置一个记录数初始为-1，最终结果应该是0，每次遇到数字可以-2增加对#的容忍度
+332. 重新安排行程 ReconstructItinerary_332：用一个hashmap<String,PriorityQueue<String>>保存每个点及其邻节点，然后使用深度遍历，第一次得到的结果便是答案（因为每次都是用的最小路径）。
+334. 递增的三元子序列IncreasingTripletSubsequence_334:遍历更新最小的数和次小的数，如果某个数大于这两个数，则有三个数递增，返回true.
+337. 打家劫舍 III HouseRobber3_337:dfs
+338. 比特位计数 CountingBits_338:对于2^N的数，末尾N-1位的重复规律，正好等于前N-1个数的重复规律，而这时只需要加1即可。
+341. 扁平化嵌套列表迭代器 FlattenNestedListIterator_341:使用stack保存List，每次hasnext判断头是否是Int，是就返回true，不是就将头list拆开压入stack
+343. 整数拆分IntegerBreak_343:拆出足够多的 3 就能使得乘积最大
+347. 前K个高频元素 TopKFrequentElements_347:方法一使用桶排序；方法二使用优先队列；
+355. 设计推特DesignTwitter_355 :设置两个map分别对应userid和关注人  以及和他自己发送的推特
+357. 计算各个位数不同的数字个数 CountNumbersWithUniqueDigits_357:
+372. 超级次方 SuperPow_372：
+373. 查找和最小的K对数字 FindKPairsWithSmallestSums_373:用最小堆保存遍历过程中的pairs,当遍历到(i,j)时，继续往下遍历，相邻的结点是(i+1,j)，(i,j+1) ,因为是有序数组，这两个pair是较小的，加入堆中。
+375. 猜数字大小2 GuessNumberHigherOrLower2_375:在1-n个数里面，我们任意猜一个数(设为i)，保证获胜所花的钱应该为 i + max(w(1 ,i-1), w(i+1 ,n))，这里w(x,y))表示猜范围在(x,y)的数保证能赢应花的钱，则我们依次遍历 1-n作为猜的数，求出其中的最小值即为答案
+377. 组合总和4 CombinationSum4_377:求target有多少种组合方式，使用动态规划，dp[i] += dp[i-nums[j]] 
+378. 有序矩阵中第K小的元素 KthSmallestElementInASortedMatrix_378：使用优先队列 ，自定义比较规则Comparable
+380. 常数时间插入、删除和获取随机元素 InsertDeleteGetRandomO1_380:使用一个Arraylist用来存储数据，一个HashMap用来存储 数据和它在list对应的坐标位置，每次新增就先在map查询是否有，没有就在这两个结构上add
+382. 链表随机节点 LinkedListRandomNode_382：蓄水池抽样法
+385. 迷你语法分析器  MiniParser_385:用栈维护一个包含关系，类似于用栈维护带 '(' 的表达式
+386. 字典序排数 LexicographicalNumbers_386：找规律
+390. 消除游戏 EliminationGame_390:规律题
+392. 判断子序列IsSubsequence_392:贪心算法
+394. 字符串解码 DecodeString_394:while循环解析
+395. 至少有K个重复字符的最长子串 LongestSubstringWithAtLeastKRepeatingCharacters_395:用递归，先得到所有字母每个出现的次数和，然后遍历，当前位置出现次数不到K就用他将前后分段，查看前一段是否符合
+396. 旋转函数 RotateFunction_396:直接求解或者动态规划
+397. 整数替换 IntegerReplacement_397:利用bit位的操作
+398. 随机数索引RandomPickIndex_398：蓄水池取样算法 
+399. 除法求值 EvaluateDivision_399:dfs,使用一个map存储点与它连接点的关系，一个map存储对应的权值
+402. 移掉K位数字 RemoveKDigits_402:使用char[]，每次添加while判断当前位的前位是否大于当前位，大于就count--即压缩前位让当前位前移。然后移除首位为0的
+406. 根据身高重建队列QueueReconstructionByHeight_406:使用Arrays.sort(people,new Comparator<int []>())
+413. 等差数列划分ArithmeticSlices_413:找出等差子数列的规律
+416. 分割等和子集  PartitionEqualSubsetSum_416：动态规划，0/1背包问题。先判断数组和为偶数，然后将里面元素分为考虑和不考虑的
+417. 太平洋大西洋水流问题 PacificAtlanticWaterFlow_417：dfs
+419. 甲板上的战舰 BattleshipsInABoard_419：遍历二维数组，判断当前位置是否是X，如果是，就判断它的上位置、左位置是否是X，是就说明该位置并在前位置，不是X就count++，遍历下一个位置
+421. 数组中两个数的最大异或值MaximumXORofTwoNumbersinanArray_421:利用XOR的性质，a^b = c, 则有 a^c = b，且 b^c = a;
+423. 从英文中重建数字 ReconstructOriginalDigitsFromEnglish_423:根据英文单词字符出现次数找到个别数字出现次数
+424. 替换后的最长重复字符 LongestRepeatingCharacterReplacement_424:使用滑动窗口，判断窗口内是否符合要求
+430. 扁平化多级双向链表 FlattenAMultilevelDoublyLinkedList_430：使用dfs先遍历子节点，再向后移动
+433. 最小基因变化 MinimumGeneticMutation_433：类似127题 用广度优先搜索查找最短路径。利用queue遍历，每次将可能的下一个字符串放入队列，使用hashSet放未被遍历的元素，用过后移除
+435. 无重叠区间 Non_overlappingIntervals_435:贪心算法，每次都找到那个结束点最小的区间，然后依次向后找那些与前面区间不冲突且结束点早的区间。
+436. 寻找右区间 FindRightInterval_436：使用TreeMap 首先将所有起始位置和他的序号放入TreeMap（key是位置I的起始位置，value是I）当中，随后遍历每个位置的结束位置，使用TreeMap的方法，使用当前序号结束位置的大小找到TreeMap中第一个大于等于其结束位置的Entry，如果存在则取出value，不然就返回-1
+445. 两数相加 II AddTwoNumbersII_445:使用栈 从最后一位开始计算
+442. 数组中重复的数据 FindAllDuplicatesInAnArray_442:每个元素数值都小于n,可以利用它，遍历到某个a[i]元素，查看 a[a[i]-1]位置元素，如果是正数说明之前a[i]这个数值没有出现过，就把 a[a[i]-1]取反，如果是负数说明a[i]这个数值出现过两次，记录它，
+449. 序列化和反序列化二叉搜索树 SerializeAndDeserializeBST_449:使用先序遍历保存树，然后再反序列化
+450. 删除二叉搜索树中的节点 DeleteNodeInABST_450 :使用递归方法  如果要删除的节点有左孩子, 则可以取左孩子的最右节点替换要删除的节点
+451. 根据字符出现频率排序:设计一个类，用于存储每个字符出现的次数和保存的字符是什么,用一个map存储字符和字符对应的类，在List<Product>根据出现次数排序
+452. 用最少数量的箭引爆气球 MinimumNumberOfArrowsToBurstBalloons_452：先按Xstart的大小排序，然后按Xend的大小排序，贪心策略：从points数组第一个开始遍历，如果第i和前i-1个气球都有重叠，则他们可以一次击破，直到出现某个气球与它之前的某个气球不完全重叠，则需要射出一箭
+454. 四数相加 II Sum4II_454：先计算A和B所有可能 保存在map，出现重复就过就value+1，然后遍历C和D，找到map中Key-C-D后为0的个数
+456. 132模式 Find132Pattern_456:建一个栈来维持一个单调子序列，倒序扫描。设置一个s2为第三个数，从后往前遍历NUms[i]i位置代表s0，stack里保存的是最大值即大于S2的数据
+457. 环形数组循环 CircularArrayLoop_457：一个循环判断各个条件
+462. 最少移动次数使数组元素相等 II MinimumMovesToEqualArrayElementsII_462:找到中位数，然后看每个数字与中位数差几
+464. 我能赢吗CanIWin_464 （结果有点不明白）：使用map保存一种选择方式是否赢，使用一个数组保存每个元素是否被使用，使用递归判断  备忘录动态规划
+467. 环绕字符串中唯一的子字符串 UniqueSubstringsInWraparoundString_467:用dp的方式，找到以某个字符结尾的最长的有多少种可能 找出以’a-z’每个字符结尾的情况下，最长的子串有多长，然后将其相加就可以
+468. 验证IP地址 ValidateIPAddress_468：正常验证
+470. 用 Rand7() 实现 Rand10() ImplementRand10UsingRand7_470:先构造一个randN，这个N必须是10的整数倍，然后randN % 10就可以得到了rand10.所以可以从rand7先构造出rand49，再把rand49中大于等于40的都过滤掉，这样就得到了rand40，在对10取余即可。
+473. 火柴拼正方形 MatchsticksToSquare_473： dfs+剪枝
+474. 一和零  OnesAndZeroes_474:类似01背包问题，用动态规划
+477. 汉明距离总和 TotalHammingDistance_477:一共n个数，如果某一位上有k个数为1，则有n-k个数为0,那么这个位置贡献的总汉明距离是k(n-k)
+478. 在圆内随机生成点 GenerateRandomPointinaCircle_478:随机出半径和角度
+481. 神奇字符串 MagicalString_481：规律题
+486. 预测赢家PredictTheWinner_486：递归。两人依次拿，如果Player1赢，则Player1拿的>Player2拿的。我们把Player1拿的视为"+"，把Player2拿的视为"-"，如果最后结果大于等于0则Player1赢。
+491. 递增子序列IncreasingSubsequences_491：递归dfs
+494. 目标和TargetSum_494:方法1.dfs每次sum+nums[]或sum-nums[]；方法2.备忘录  使用一个map保存index->sum时有多少种答案；方法3.找规律+动态规划
+495. 提莫攻击TeemoAttacking_495:先算出每次中毒不冲突的总时间，再把之间冲突的时间给减去
+497. 非重叠矩形中的随机点 RandomPointinNonOverlappingRectangles_497：先根据面积作为权重，按概率选到长方形。之后在这个长方形的范围内随机选x和y，输出
+498. 对角线遍历DiagonalTraverse_498: 蛇形遍历矩阵；斜向上时i-- j++;斜向下时i++ j--;使用di dj判断溢出条件
+503. 下一个更大元素 II NextGreaterElementII_503：类似496题，使用栈 后进先出原则，遍历每个元素，将当前元素与栈头元素判断，如果当前元素大于栈头，就说明当前元素是栈头的最近下一个更大元素，然后弹出栈头保存，再接着判断栈头和当前元素，不大于就将当当前元素压栈
+508. 出现次数最多的子树元素和 MostFrequentSubtreeSum_508:找出出现频率最高的子树和值,使用dfs计算每个子树和,用HashMap，以子树和为key，以出现次数为value,数组来记录，如果碰到次数更当前记录的次数最大的一直的子树和，就添加到数组中，当出现更大次数的时候就重新记录，替代数组第一个元素
+513. 找树左下角的值FindBottomLeftTreeValue_513P:bfs,使用队列，先推入根节点，然后每次先推右子树再推左子树，最后剩下最后一个元素
+515. 在每个树行中找最大值FindLargestValueinEachTreeRow_515:bfs,记录当前层和下一层的节点数，记录最大值，使用队列
+516. 最长回文子序列 LongestPalindromicSubsequence_516:动态规划，dp[i][j]表示字符串i～j下标所构成的子串中最长回文子串的长度，返回dp[0][len-1]
+518. 零钱兑换 II CoinChange2_518：动态规划，使用一维数组来记录，dp[i] = dp[i] + dp[i - coin]，达到目前金钱树i的方式与当前数+前某个位置加一个硬币的位置数相关
+*519. 随机翻转矩阵RandomFlipMatrix_519:有问题没解决
+522. 最长特殊序列 II LongestUncommonSubsequenceII_522：找出所有可以称为非公共子串的字符串，然后在从中选出最长的，就是所需要的字符串。
+523. 连续的子数组和 ContinuousSubarraySum_523:遍历数组一个一个加，每次加一个就记录mod k的结果，如果出现两个相同的值，说明这两个位置中间值的和是k的倍数
+524. 通过删除字母匹配到字典里最长单词 LongestWordinDictionarythroughDeleting_524:返回最长或长度一样时返回字母表中最前的。,那么可以对字典中的字符串按照这两个要求排序：长度降序、长度相同时字母表升序。,这样遍历字典字符串列表，第一个能被输入字符串去掉某些字符表示出的字典字符串即为所求。 
+525. 连续数组 ContiguousArray_525:将数组中的0变为-1，这样[i,j]的和为0，在map中存储从0~i的和 value为i的值。返回值res = max(res,i-map.get(sum))
+526. 优美的排列BeautifulArrangement_526:递归回溯,从第一位到第N位，找到对应的没有放置过的数字放,从1位置开始  优美数组第一位是1
+528. 按权重随机选择RandomPickwithWeight_528：设置一个数组，每个位置存放从0~i的权重和，先随机数，然后二分查找到这个数的位置
+529. 扫雷游戏Minesweeper_529:先判断是否是M，在dfs
+535. TinyURL 的加密与解密 EncodeAndDecodeTinyURL_535:最简单的 用hashCode作为加密
+537. 复数乘法ComplexNumberMultiplication_537：使用split拆分再计算再合并
+539. 最小时间差MinimumTimeDifference_539：先排序，然后计算时间差
+540. 有序数组中的单一元素SingleElementinaSortedArray_540: 二分查找，判断该位置是否与前后都不同，还要依靠当前位置是偶数还是奇数，判断向左还是向右移动
+542. 01 矩阵 _01Matrix_542：先将所有为1的点设置为max，然后将当前位置放入队列，广度优先搜索这个位置的上下左右四个点，如果临近点的值小于当前位置值+1 说明该位置的值被更新过了不需改变
+547. 朋友圈  FriendCircles_547：可以用深度优先  使用Visited[]保存是否被遍历过出现在之前的某个朋友圈中，这里使用广度搜索 用队列和visited[]
+553. 最优除法OptimalDivision_553:每次最后第二个除以它的下一个
+556. 下一个更大元素 III NextGreaterElementIII_556:意思是用n这个数的各个位的数重新排列组合，形成比n大的数* 1、从右向左找第一个不符合升序的数，位置记为index，如果index为-1，返回-1* 2、从右向index找第一个比他大的数，交换index位置的数和这个比他大的数* 3、从index+1到末尾进行升序排列
+560. 和为K的子数组 SubarraySumEqualsK_560:sum[i,j] = sum[0,j]-sum[0,i-1],k = sum - sum[0,i-1],sum[0,i-1] = sum-k,对于每一个sum来说，前面的子序列中有多少个sum-k结果中就可以构成多少个sum[i,j]
+565. 数组嵌套 ArrayNesting_565:从多个起点到达同一个值之后的路径都相同，所以每个值最多遍历一遍 O(N)。使用set存储遍历过的位置，然后每次从起点遍历时判断当前位置是否在set中，
+567. 字符串的排列 PermutationInString_567:滑动窗口，统计S2一个区间的字符，是否与S1相符,使用两个数组分别保存S1和S2出现每个字符的次数
+576. 出界的路径数 OutOfBoundaryPaths_576:动态规划 d[i][j][k]表示从(i, j)开始在k步内移除边界的路径数.可知dp[i][j][k]只与(i, j)四周邻接点在k-1步内移除边界的路径数有关* dp[i][j][k] = dp[i-1][j][k-1] + dp[i+1][j][k-1] + dp[i][j-1][k-1] + dp[i][j+1][k-1];
+583. 两个字符串的删除操作 DeleteOperationForTwoStrings_583：动态规划dp[i][j]可以表示为word1的前i个字符和word2的前j个字符的最长公共子序列长度；或者word1的前i个字符和word2的前j个字符组成的两个单词，能使其变相同的最小的步数
+592. 分数加减运算FractionAdditionAndSubtraction_592：每次截取分子和分母，找到最大公约数。
+593. 有效的正方形ValidSquare_593:先将四个点按X轴排序，然后判断四条边长度相同，两条对角线长度相同
+611. 有效三角形的个数ValidTriangleNumber_611：排序+双指针，对输入数组nums排序，枚举最小的边，利用双指针寻找符合条件的长度最大的两条边。时间复杂度O(n²),空间复杂度O(logn)
+621. 任务调度器TaskScheduler_621：先找到最多出现次数的字符 出现次数和有几个，然后比较有空格情况和没空格情况
+622. 设计循环队列 DesignCircularQueue_622:用[]做队列，使用队头和队尾两个标记，循环就用%(size+1)
+623. 在二叉树中增加一行AddOneRowtoTree_623:使用队列每次压入一个节点的左子树，循环，直到找到第d-1层，然后加入v节点
+636. 函数的独占时间ExclusiveTimeofFunctions_636:方法1：后进先出可以使用栈，使用一个int[]保存ID、timePoint、被占用时间 保存到Stack；方法2：拿到上一个log的 start/stop time 设为prev，再拿到当前 log 的 start/stop time ，计算出两个time之间的时间差
+638. 大礼包ShoppingOffers_638 :循环判断special里的组合是否符合needs里的数量，符合就dfs接着遍历special，用一个新的List<Integer> 存储needs-special后的各个数量，用一个map保存每次dfs后的（组合，最小价格）组合
+640. 求解方程 SolveTheEquation_640:用=分割左右两个部分，然后分别获取两部分的x系数和常数项，最后左右求解
+641. 设计循环双端队列 DesignCircularDeque_641:使用一个数组两个前后指针
+646. 最长数对链 MaximumLengthofPairChain_646:贪心或动态规划
+647. 回文子串PalindromicSubstrings_647：dp或者以每个位置为中心扩大；
+648. 单词替换 ReplaceWords_648：用一个hashset存储缩写list中的元素,把sentence通过split(” “)分割成单词array,逐个单词对应查找其缩写并转换成其缩写,再把缩写后的单词array合成sentence并返回。
+649. Dota2 参议院 Dota2Senate_649:用两个队列queue，把各自阵营的位置存入不同的队列里面，然后进行循环，每次从两个队列各取一个位置出来，看其大小关系，小的那个说明在前面，就可以把后面的那个Ban掉，所以我们要把小的那个位置要加回队列里面，但是不能直接加原位置，因为下一轮才能再轮到他来Ban，所以我们要加上一个n，再排入队列。这样当某个队列为空时，推出循环，我们返回不为空的那个阵营
+650. 只有两个键的键盘KeysKeyboard2_650:
+652. 寻找重复的子树 FindDuplicateSubtrees_652:在一个map<string,list<treenode>>里保存一个子树中序遍历的字符串为key，value保存子树，如果value长度大于1，说明重复
+658. 找到 K 个最接近的元素 FindKClosestElements_658:每次比较首尾两个数字跟x的距离，将距离大的那个数字删除，直到剩余的数组长度为k为止
+659. 分割数组为连续子序列 SplitArrayintoConsecutiveSubsequences_659:Map<Integer, PriorityQueue<Integer>> dmap的key为扑克牌队列的末尾，value为优先队列，存储扑克牌队列的长度
+662. 二叉树最大宽度 MaximumWidthofBinaryTree_662:使用队列，一个队列做树的广度优先遍历，一个队列记录前一个队列中树节点对应的位置标号
+667. 优美的排列 IIBeautifulArrangementII_667 ：先组合出k-1个不同整数，即奇数位放从n~n-k/2  偶数位方1~1+k/2 之后所有位顺序放入
+713. 乘积小于K的子数组SubarrayProductLessThanK_713:使用滑动窗口的方法，维护一个乘积小于k的窗口，窗口大小等于该窗口内子数组的数量
+739. 每日温度问题DailyTemperatures_739：可以使用两层循环暴力破解，找到最近的天数就跳出一层循环
+
 -------------------------------------------------------------
 困难
 32. 最长有效括号LongestValidParentheses：寻找字符串最长的包含有效括号的子串的长度；使用栈stack用来保存括号对应的位置而不是（），每次是左括号就无条件Push，右括号就pop，然后判断栈是否为空，根据条件重新设置MaxLength
 37. 解数独SudoKuSolver_37:使用回溯法解，辅助函数ifValid判断i j位置放入的元素是否符合九宫格要求，dfs回溯每个位置放入元素
-
-
+41. 缺失的第一个正数FirstMissingPositive:利用数组本身，利用数组的index来作为数字本身的索引，把正数按照递增顺序依次放到数组中。即让A[0]=1, A[1]=2, A[2]=3
+44. 通配符匹配WildCardMatching:两种方法。1动态规划，维护二维数组，根据递推公式求结果；2维护两个指针，分别指向两个字符串，单字符匹配则俩指针都++，否则依次判断，使用IndexP记录当前位置,preS记录‘*’对应前一个字符位置，boolean确定是否面对*，并s字符串后移
+45. 跳跃游戏 II JumpGame2_45:贪心算法，每次直接找当前位置可活动最远范围内的 下一个可活动最远范围的位置索引，然后再找下一个，类推每次找最远的。
+51. N皇后NQueens：回溯法，每个答案维护一维数组int[i]，表示在i行皇后放在第int[i]列，每次判断与之前冲突不，不冲突递归下一行，到行数=n时将一维数组读出加到list，两层for i行不是int[i]列的str+=".",是int[i]列的+="Q"
+57. 插入区间InsertInterval：建list<> res；遍历区间组，每次和要插入的区间比较，inter.end<newInterval.start就插入inter,大于就插入newInterval,重叠就合并两个区间
+72. 编辑距离EditDistance_72:动态规划，维护一个二维数组D(i,j) 表示从第1个单词的第0位至第i位形成的子串 和 第2个单词的第0位至第j位形成的子串的编辑距离。
+76. 最小覆盖子串MinimumWindowSubstring_76：用一个数组ta维护短串T每个字符出现的次数，维护两个指针start和end搜索大串S，end一直后移，如果在ta中出现，则在数组sa中也保存这个出现的次数+1,count+1，直到count=t.length，这时看这个窗口start是否是重复的或者可以是多余的，就start后移到最大，判断这个窗口内字符串是否最小，end接着后移
 -------------------------------------------------------------
-例子：组合总和CombinationSum，22.括号生成GenerateParentheses，46全排列Permutations，17.电话号码的字母组合LetterCombinationsOfAPhoneNumber
+例子：组合总和CombinationSum，22.括号生成GenerateParentheses，46全排列Permutations，17.电话号码的字母组合LetterCombinationsOfAPhoneNumber，77. 组合Combinations_77，78. 子集Subsets_78
 回溯法：有时会遇到这样一类题目，它的问题可以分解，但是又不能得出明确的动态规划或是递归解法，此时可以考虑用回溯法解决此类问题。
 回溯算法的基本思想是：从一条路往前走，能进则进，不能进则退回来，换一条路再试。可以认为回溯算法一个"通用解题法" （DFS）
 回溯法三个概念：
@@ -79,7 +316,69 @@
 	状态转移公式：F(n)=F(n-1)+F(n-2)
 动态规划变形：备忘录法，用变量/数组/二维数组等记录中间过程数据，减少计算
 
-例子：55. 跳跃游戏JumpGame，爬梯子问题，国王金矿问题，最长公共子序列
+例子：55. 跳跃游戏JumpGame，爬梯子问题，国王金矿问题，最长公共子序列，62不同路径UniquePaths_62，64. 最小路径和MinimumPathSum_64，72. 编辑距离EditDistance_72
 -----------------------------------------
 
-全排列：31Next Permutation ，46 Permutations，47Permutations2 ,60Permutation Sequence
+全排列：31Next Permutation ，46 Permutations，47Permutations2 ,60Permutation Sequence，
+-----------------------------------------
+原地算法（应该就是说不占用空间）：73. 矩阵置零  
+-----------------------------------------
+计数排序：它的优势在于在对一定范围内的整数排序时，它的复杂度为Ο(n+k)（其中k是整数的范围），快于任何比较排序算法。牺牲空间换取时间，当O(k)>O(n*log(n))的时候其效率反而不如基于比较的排序（基于比较的排序的时间复杂度在理论上的下限是O(n*log(n)), 如归并排序，堆排序）
+-----------------------------------------
+基数排序
+-----------------------------------------
+桶排序
+-----------------------------------------
+插入排序  InsertionSortList_147
+-----------------------------------------
+归并排序 SortList_148
+-----------------------------------------
+逆波兰表达式（后缀表达式）：作用是因为计算机普遍采用的内存结构是栈式结构，它执行先进后出的顺序
+(a+b)*c-(a+b)/e→((a+b)*c)((a+b)/e)-→((a+b)c*)((a+b)e/)-→(ab+c*)(ab+e/)-→ab+c*ab+e/-
+150. 逆波兰表达式求值EvaluateReversePolishNotation_150：使用栈，每次遇到运算符则计算栈顶两个元素，然后放回，最后返回栈顶的元素
+-----------------------------------------
+144题上写了先序、中序、后续遍历同一解法
+94. 二叉树的中序遍历BinaryTreeInorderTraversal_94：三种方法，1递归，2迭代，3空间复杂度为1的迭代
+144. 二叉树的前序遍历BinaryTreePreorderTraversal_144：可以迭代或递归，迭代使用栈，将根结点入栈 ，进入循环。先弹出栈顶元素，访问它，然后将该元素的右子树入栈，最后将该元素的左子树入栈
+145. 二叉树的后序遍历BinaryTreePostorderTraversal_145:与144迭代类似，不过这里要增加一个栈记录每个节点的右节点是否已经被访问过,只有当左右节点都被访问的前提下才能访问根节点
+-----------------------------------------
+字典树（又称为 前缀树  ，单词查找树，Trie树）  
+应用： 大量的  字符串的快速检索 字符串排序 最长公共前缀 自动匹配前缀显示后缀
+性质：不同字符串的相同前缀只保存一份
+		/\
+	  a	    i
+    / | \    \
+   ad ag an  in
+   |  |   |   |
+  ada age ane int
+  
+ 208. 实现 Trie (前缀树)
+-----------------------------------------
+
+-----------------------------------------
+后缀树   就是把一串字符的所有后缀保存并且压缩的字典树
+应用：后缀树并不是针对大量字符串的，而是针对一个或几个字符串来解决问题。比如字符串的回文子串，两个字符串的最长公共子串等等
+查找某个字符串s1是否在另外一个字符串s2中，指定字符串s1在字符串s2中重复的次数
+-----------------------------------------
+小顶堆，大顶堆
+-----------------------------------------
+图论  环 CourseSchedule_207 210. 课程表 IICourseSchedule2_210
+图的遍历-----这个没看过  要先看一眼
+-----------------------------------------
+带环的链表有个性质：假设环的长度是n，那么p1从链表起始出发，p2从链表头部移动n次的位置出发，同时移动两个指针，当它们的值相同时，它们就位于环的入口元素。
+-----------------------------------------
+线段树 307
+-----------------------------------------
+树状数组
+
+-----------------------------------------
+蓄水池抽样  
+LinkedListRandomNode_382   398. 随机数索引RandomPickIndex_398
+给出一个数据流，这个数据流的长度很大或者未知。并且对该数据流中数据只能访问一次。请写出一个随机选择算法，使得数据流中所有数据被选中的概率相等。
+其实这类题还有一个本办法：遍历一遍，用list保存所有符合条件的坐标，最后随机这个list
+-----------------------------------------
+广度优先搜索  bfs  队列+visited[]
+547. 朋友圈  FriendCircles_547
+127. 单词接龙WordLadder_127
+433. 最小基因变化 MinimumGeneticMutation_433
+542. 01 矩阵 _01Matrix_542
