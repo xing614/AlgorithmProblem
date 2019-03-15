@@ -37,7 +37,7 @@ import java.util.Stack;
  * @author liang
  *
  */
-public class ValidParentheses {
+public class ValidParentheses_20 {
 
 	/**
 	 * 使用栈，如果要压入的字符是左符号，就直接放入；如果是右符号，就判断前一个是否是对应的左符号，不是就false，是就把最后一个左符号和这个右符号都推出栈
