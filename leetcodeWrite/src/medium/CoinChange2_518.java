@@ -32,7 +32,6 @@ package medium;
  *
  */
 public class CoinChange2_518 {
-
 	/**
 	 * 动态规划
 	 * 使用一维数组来记录，dp[i] = dp[i] + dp[i - coin]

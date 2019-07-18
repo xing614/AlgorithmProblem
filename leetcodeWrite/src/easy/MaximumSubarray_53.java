@@ -14,7 +14,7 @@ package easy;
  * @author liang
  *
  */
-public class MaximumSubarray {
+public class MaximumSubarray_53 {
 
 	/**
 	 * 方法一，O（n）

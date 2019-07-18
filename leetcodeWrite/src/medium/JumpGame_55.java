@@ -54,6 +54,7 @@ public class JumpGame_55 {
     
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+
 		int[] nums = new int[]{2,3,1,1,4};
         System.out.println(canJump(nums));
 	}

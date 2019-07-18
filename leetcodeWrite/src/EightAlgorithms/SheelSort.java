@@ -20,6 +20,7 @@ public class SheelSort {
 			for (int i = increment; i < a.length; i++) {
 				temp = a[i];
 				for (j = i; j >= increment; j -= increment) {//每一组的一个相对相同位置
+					print(a);
 					if(temp > a[j - increment]){ //如想从小到大排只需修改这里
 		                a[j] = a[j - increment];
 		            }
@@ -27,16 +28,26 @@ public class SheelSort {
 		                break;
 		            }
 				}
-				a[j] = temp;
+				a[j] = temp;//把a[i]的值设置到j-increment对应位置中小于前一个对应位置数据的位置
 			}
 		}
 			
 
 	}
+	public void print(int[] a) {
+		for(int i=0;i<a.length;i++) {
+			System.out.print(a[i]+" ");
+		}		
+		System.out.println();
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int[] a = {11,4,67,8,5,76,14,36,45,1,6,43};
+		SheelSort ss = new SheelSort();
+		ss.sheelSort(a);
 
+		
 	}
 
 }

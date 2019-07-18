@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 /**
- * 前K个高频元素
+ * 347. 前K个高频元素
  * 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
 
 例如，
@@ -21,7 +21,7 @@ import java.util.PriorityQueue;
  * @author liang
  *
  */
-public class TopKFrequentElements {
+public class TopKFrequentElements_347 {
 
 	/**
 	 * 使用桶排序

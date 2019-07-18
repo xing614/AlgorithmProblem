@@ -42,7 +42,7 @@ for (int i = 0; i < len; i++) {
  * @author liang
  *
  */
-public class RemoveElement {
+public class RemoveElement_27 {
 
     public int removeElement(int[] nums, int val) {
     	int index = 0;

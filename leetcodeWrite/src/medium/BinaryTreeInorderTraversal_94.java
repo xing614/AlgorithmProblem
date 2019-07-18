@@ -89,7 +89,7 @@ public class BinaryTreeInorderTraversal_94 {
 	 * @return
 	 */
 	public List<Integer> inorderTraversal3(TreeNode root) {
-	    ArrayList<Integer> res = new ArrayList<Integer>();
+	    List<Integer> res = new ArrayList<Integer>();
 	    TreeNode cur = root;
 	    TreeNode pre = null;
 	    while(cur != null)

@@ -38,7 +38,7 @@ for (int i = 0; i < len; i++) {
  * @author liang
  *
  */
-public class RemoveDuplicatesFromSortedArray {
+public class RemoveDuplicatesFromSortedArray_26 {
 	
 	/**
 	 * 返回的是数组长度

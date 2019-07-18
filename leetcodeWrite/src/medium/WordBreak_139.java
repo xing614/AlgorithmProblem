@@ -35,7 +35,6 @@ import java.util.List;
  *
  */
 public class WordBreak_139 {
-	
 	/**
 	 * dfs，使用一个二维数组维护，该数组保存字符串从i到j的子串在字典中是否有，有就为true
 	 * @param s

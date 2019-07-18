@@ -22,14 +22,20 @@ public class SelectSort {
 					position = j;
 				}
 			}
-			a[position] = a[i];//交换出最小的数
-			a[i] = value;
+			a[position] = a[i];//交换出最小的数.这一轮找到的最小值的位置变为i位置元素
+			a[i] = value;//i位置变为最小值
 		}
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		SelectSort ss = new SelectSort();
+		int[] aa= {1,3,5,7,4,2,9,6};
+		ss.selectSort(aa);
+		for(int a:aa) {
+			System.out.println(a);
+		}
 	}
 
 }

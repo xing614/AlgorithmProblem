@@ -27,7 +27,7 @@ package easy;
  * @author liang
  *
  */
-public class CountAndSay {
+public class CountAndSay_38 {
 	/**
 	 * 这道题算就是字符串处理的问题，序列中第一个字符串是“1”，
 	 * 接下来依次统计前一个字符串中连续相同字符的数量，并添加到下一字符串中

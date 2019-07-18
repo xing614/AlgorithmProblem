@@ -11,7 +11,7 @@ package easy;
  * @author liang
  *
  */
-public class MergeTwoSortedLists {
+public class MergeTwoSortedLists_21 {
 	
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
     	ListNode ln = new ListNode(0);
